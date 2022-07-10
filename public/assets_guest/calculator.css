@@ -1,0 +1,36 @@
+.calc{
+    background-color: #7dd5f7;
+    height: auto;
+    width: 50%;
+    display:block;
+    margin: 0 auto;
+    padding-top:2% ;
+    padding-bottom : 2% ;
+}
+.field{
+    background-color: #5692aa;
+    width:90%;
+    height:auto;
+    display:block;
+    margin: 0 auto;
+    padding: 15%;
+    font-size:220%;
+    color:white;
+}
+.tombol{
+    margin-top:2%;
+}
+.tombol span{
+    margin-top: 2%;
+    background-color: #5692aa;
+    width:15%;
+    height:auto;
+    display:inline-block;
+    margin: 0 auto;
+    text-align:center;
+    line-height:auto;
+    color:white;
+    font-size:120%;
+    font-weight:bold;
+    border-radius:5px;
+}

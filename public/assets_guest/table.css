@@ -1,0 +1,21 @@
+.tableData{
+    /* border: 2px solid black; */
+    margin:0 auto;
+    /* color:white; */
+}
+.tableData tr{
+    /* border: 2px solid black; */
+    padding: 2%;
+}
+.tableData th{
+    /* border: 2px solid black; */
+    width:13%;
+    background-color: #49c9fb;
+    color: white;
+    padding: 2%;
+}
+.tableData td{
+    /* border: 2px solid black; */
+    background-color: #9de3ff;
+    padding: 2%;
+}

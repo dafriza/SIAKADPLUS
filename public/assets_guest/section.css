@@ -1,0 +1,30 @@
+.section-content {
+    /* margin-top: 100px; */
+    background-color: #cae9f5;
+    padding: 2%;
+    /* height: 550px; */
+    text-align: center;
+    height: auto;
+  }
+  
+  .section-content label{
+    margin:1%;
+  }
+  
+  .section-content input{
+    width: 40%;
+    /* display:block; */
+    height: auto;
+    margin-top: 2%;
+    text-align: center;
+  }
+  
+  .section-content button{
+    margin:2%;
+    padding: 1%;
+    border: none;
+    background-color: #49c9fb;
+    color: white;
+    border-radius:10%;
+  }
+  
