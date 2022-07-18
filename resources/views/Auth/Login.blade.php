@@ -42,9 +42,13 @@
                                         <div class="alert alert-danger" role="alert">
                                             {{ Session::get('error') }}
                                         </div>
+                                        @elseif (Session::has('logout'))
+                                        <div class="alert alert-success" role="alert">
+                                            {{ Session::get('logout') }}
+                                        </div>
                                         @endif
                                         {{-- End Of Alert --}}
-                                        <form class="" method="POST" action="/authLogin">
+                                        <form class="" method="POST" action="/admin/authLogin">
                                             @csrf
                                             <div class="form-group">
                                                 <label for="nama_admin">Username</label>

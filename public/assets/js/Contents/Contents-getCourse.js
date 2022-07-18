@@ -1,5 +1,5 @@
 $.ajax({
-    url: "/getCourse",
+    url: "/admin/getCourse",
     type: "GET",
     dataType: "json",
     success: function (data) {

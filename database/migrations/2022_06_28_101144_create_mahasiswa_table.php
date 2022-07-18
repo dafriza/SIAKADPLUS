@@ -27,6 +27,7 @@ return new class extends Migration
             ->onUpdate('cascade');
             $table->string('nama',50);
             $table->string('nim',50);
+            $table->integer('PIC');
             $table->string('studi',50);
             $table->string('phone',20);
             $table->string('email',255);

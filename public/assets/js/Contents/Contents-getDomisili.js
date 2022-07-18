@@ -1,5 +1,5 @@
 $.ajax({
-    url: "/getDomisili",
+    url: "/admin/getDomisili",
     type: "GET",
     dataType: "json",
     success: function (data) {

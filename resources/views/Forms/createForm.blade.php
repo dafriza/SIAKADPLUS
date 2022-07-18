@@ -6,7 +6,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h6 class="card-title">Create Form</h6>
-                        <form action="/insertForm" method="post">
+                        <form action="/admin/insertForm" method="post">
                             @csrf
                             <input type="hidden" name="id_mahasiswa">
                             <div class="form-group">
@@ -16,6 +16,10 @@
                             <div class="form-group">
                                 <label for="nim">NIM</label>
                                 <input type="number" class="form-control" name="nim" value="xxx10370311xxx" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pic">PIC</label>
+                                <input type="number" class="form-control" name="pic" value="" required>
                             </div>
                             <div class="form-group">
                                 <label for="studi">Studi</label>

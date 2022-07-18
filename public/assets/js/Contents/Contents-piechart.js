@@ -1,5 +1,5 @@
 $.ajax({
-    url: "/dataChartPie",
+    url: "/admin/dataChartPie",
     type: "GET",
     dataType: "json",
     success: function (data) {

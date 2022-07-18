@@ -38,24 +38,27 @@
                                         <h5 class="text-muted font-weight-normal mb-4">Welcome back! Log in to your
                                             account.</h5>
                                         {{-- Alert --}}
-                                        @if (Session::has('error'))
-                                        <div class="alert alert-danger" role="alert">
-                                            {{ Session::get('error') }}
-                                        </div>
+                                        @if (Session::has('errorLog'))
+                                            <div class="alert alert-danger" role="alert">
+                                                {{ Session::get('errorLog') }}
+                                            </div>
+                                        @elseif (Session::has('logout'))
+                                            <div class="alert alert-success" role="alert">
+                                                {{ Session::get('logout') }}
+                                            </div>
                                         @endif
                                         {{-- End Of Alert --}}
-                                        <form class="" method="POST" action="/authLogin">
+                                        <form class="" method="POST" action="mahasiswa/authLoginMhs">
                                             @csrf
                                             <div class="form-group">
-                                                <label for="nama_admin">Username</label>
-                                                <input type="text" class="form-control" id="nama_admin"
-                                                    placeholder="Email" name="nama_admin">
+                                                <label for="nim">NIM</label>
+                                                <input type="number" class="form-control" id="nim"
+                                                    placeholder="nim" name="nim">
                                             </div>
                                             <div class="form-group">
-                                                <label for="password">Password</label>
-                                                <input type="password" class="form-control" id="password"
-                                                    autocomplete="current-password" placeholder="Password"
-                                                    name="password">
+                                                <label for="pic">PIC</label>
+                                                <input type="password" class="form-control" id="pic"
+                                                    autocomplete="current-password" placeholder="pic" name="pic">
                                             </div>
                                             <div class="form-check form-check-flat form-check-primary">
                                                 <label class="form-check-label">

@@ -1,5 +1,5 @@
 $.ajax({
-    url: "/dataChartBar",
+    url: "/admin/dataChartBar",
     type: "GET",
     dataType: "json",
     success: function (data) {

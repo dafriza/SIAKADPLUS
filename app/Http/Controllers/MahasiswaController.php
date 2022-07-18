@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\mahasiswa;
+use App\Models\course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -13,10 +14,46 @@ class MahasiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $db = mahasiswa::all();
-        return $db;
+        if ($request->session()->has('mahasiswa')) {
+            $nim = $request->session()->get('nim');
+            $pic = $request->session()->get('pic');
+            $data = mahasiswa::where('nim', $nim)->where('pic', $pic)->first();
+            $course = course::all();
+            $count_course = DB::select("SELECT count(id_course) as jml FROM pembayaran WHERE id_mahasiswa = 2 GROUP BY id_mahasiswa");
+            return view('Contents.Mahasiswa.dashboard', ['data' => $data, 'course' => $course, 'count_course' => $count_course]);
+        } else {
+            return redirect('/')->with('errorLog', 'Anda harus login terlebih dahulu');
+        }
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function authLoginMhs(Request $request)
+    {
+        $nim = $request->nim;
+        $pic = $request->pic;
+        $db = mahasiswa::where('nim', $nim)->where('PIC', $pic)->get();
+        if (count($db) > 0) {
+            $request->session()->put('mahasiswa', 'logged');
+            $request->session()->put('nim', $nim);
+            $request->session()->put('pic', $pic);
+            return redirect('/mahasiswa/dasbor');
+        } else {
+            return redirect('/')->with('errorLog', 'NIM atau PIC salah');
+        }
+        // return $db;
+        // $db = mahasiswa::all();
+        // return $db;
+    }
+    public function authLogout(Request $request)
+    {
+        $request->session()->forget(['mahasiswa', 'nim', 'pic']);
+        $request->session()->flush();
+        return redirect('/')->with('logout', 'Anda berhasil logout');
     }
 
     /**

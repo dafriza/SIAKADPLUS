@@ -29,17 +29,17 @@
                 <div class="collapse" id="dataTable">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="/dataTable" class="nav-link">
+                            <a href="/admin/dataTable" class="nav-link">
                                 Data Mahasiswa
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/dataCourse" class="nav-link">
+                            <a href="/admin/dataCourse" class="nav-link">
                                 Data Course
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/dataAdmin" class="nav-link">
+                            <a href="/admin/dataAdmin" class="nav-link">
                                 Data Admin
                             </a>
                         </li>

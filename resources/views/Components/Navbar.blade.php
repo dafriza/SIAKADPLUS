@@ -224,7 +224,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/authLogout" class="nav-link">
+                                <a href="/admin/authLogout" class="nav-link">
                                     <i data-feather="log-out"></i>
                                     <span>Log Out</span>
                                 </a>

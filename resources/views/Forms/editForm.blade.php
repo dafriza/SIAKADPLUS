@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-body">
                     <h6 class="card-title">Edit Form</h6>
-                    <form action="/updateForm" method="post">
+                    <form action="/admin/updateForm" method="post">
                         @csrf
                         <input type="hidden" name="id_mahasiswa" value="{{$d[0]->id_mahasiswa}}">
                         <div class="form-group">
@@ -18,6 +18,11 @@
                             <label for="nim">NIM</label>
                             <input type="text" class="form-control" name="nim"
                                 value="{{ $d[0]->nim }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pic">PIC</label>
+                            <input type="text" class="form-control" name="pic"
+                                value="{{ $d[0]->PIC }}" required>
                         </div>
                         <div class="form-group">
                             <label for="studi">Studi</label>

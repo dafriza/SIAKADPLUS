@@ -17,55 +17,59 @@ use Illuminate\Support\Facades\Session;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// test
-Route::get('/db_mahasiswa',[MahasiswaController::class,'index']);
-//end of test
-
-Route::get('/default', function (Request $request) {
-    // check session nama_admin
-    if ($request->session()->has('admin')) {
-        return view('Contents.default');
-    } else {
-        Session::flash('error', 'Anda harus login terlebih dahulu');
-        return redirect('/');
+Route::get('/', function (Request $request) {
+    if ($request->session()->has('mahasiswa')) {
+        return redirect('/mahasiswa/dasbor');
     }
+    return view('Auth.Login_mhs');
 });
-Route::get('dataTable', [DashboardController::class, 'index']);
-Route::get('dataCourse', [DashboardController::class, 'dataCourse']);
-Route::get('dataAdmin', [DashboardController::class, 'dataAdmin']);
-// Get data chart
-Route::get('dataChartPie', [DashboardController::class, 'dataChartPie']);
-Route::get('dataChartBar', [DashboardController::class, 'dataChartBar']);
-// Get data Course
-Route::get('getCourse', [DashboardController::class, 'getCourse']);
-Route::get('getDomisili', [DashboardController::class, 'getDomisili']);
-// Forms
-Route::get('editForm/{id}', [DashboardController::class, 'editForm']);
-Route::post('updateForm', [DashboardController::class, 'updateForm']);
-Route::get('delForm/{id}', [DashboardController::class, 'delForm']);
-Route::get('createForm', [DashboardController::class, 'createForm']);
-Route::post('insertForm', [DashboardController::class, 'insertForm']);
 
-// Login
-// Route::get('admin', function () {
-//     return view('Guest.auth.login');
-// });
-Route::get('/', function () {
-    return view('Auth.Login');
+// Dashboard Controller
+Route::prefix('admin')->group(function ()
+{
+    Route::controller(DashboardController::class)->group(function(){
+        Route::get('dataTable', 'index');
+        Route::get('dataCourse',  'dataCourse');
+        Route::get('dataAdmin',  'dataAdmin');
+        // Get data chart
+        Route::get('dataChartPie',  'dataChartPie');
+        Route::get('dataChartBar',  'dataChartBar');
+        // Get data Course
+        Route::get('getCourse', 'getCourse');
+        Route::get('getDomisili',  'getDomisili');
+        // Forms
+        Route::get('editForm/{id}',  'editForm')->name('editForm');
+        Route::post('updateForm',  'updateForm');
+        Route::get('delForm/{id}',  'delForm')->name('delForm');
+        Route::get('createForm',  'createForm');
+        Route::post('insertForm',  'insertForm');
+        // admin
+        Route::post('authLogin',  'authLogin');
+        Route::get('authLogout',  'authLogout');
+    });
+    Route::get('/', function (Request $request) {
+        if($request->session()->has('admin')){
+            return redirect('/admin/default');
+        }
+        return view('Auth.Login');
+    });
+    Route::get('/default', function (Request $request) {
+        // check session nama_admin
+        if ($request->session()->has('admin')) {
+            return view('Contents.default');
+        } else {
+            Session::flash('error', 'Anda harus login terlebih dahulu');
+            return redirect('/admin');
+        }
+    });
 });
-Route::get('/mahasiswa', function () {
-    return view('Auth.Login');
-});
-Route::post('authLogin', [DashboardController::class, 'authLogin']);
-Route::get('authLogout', [DashboardController::class, 'authLogout']);
 
-// Mahasiswa
-Route::get('mhs', [MahasiswaController::class, 'index']);
-Route::get('mhs/calc', function () {
-    return view('Guest.calculator');
+Route::prefix('mahasiswa')->group(function ()
+{
+    Route::controller(MahasiswaController::class)->group(function ()
+    {
+        Route::post('authLoginMhs', 'authLoginMhs');
+        Route::get('authLogout',  'authLogout');
+        Route::get('dasbor','index');
+    });
 });
-Route::get('mhs/table', function () {
-    return view('Guest.table-list');
-});
-Route::post('loginProcess', [AdminController::class, 'loginProcess']);

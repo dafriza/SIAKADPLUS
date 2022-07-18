@@ -21,6 +21,7 @@ class MahasiswaFactory extends Factory
             'id_domisili'=>$this->faker->numberBetween(1,32),
             'nama'=>$this->faker->name(),
             'nim'=>$this->faker->numerify('202010370311###'),
+            'PIC'=>$this->faker->randomNumber(8,true),
             'studi'=>$this->faker->jobTitle(),
             'phone'=>$this->faker->phoneNumber(),
             'email'=>$this->faker->email(),

@@ -17,7 +17,7 @@ class DashboardController extends Controller
      */
     public function index(Request $request)
     {
-        $data = DB::table('mahasigit addswa')
+        $data = DB::table('mahasiswa')
             ->join('course', 'mahasiswa.id_course', '=', 'course.id_course')
             ->get();
             if ($request->session()->has('admin')) {
@@ -136,7 +136,7 @@ class DashboardController extends Controller
                 return view('Forms.editForm', ['d' => $data]);
             }else{
                 Session::flash('error', 'Anda harus login terlebih dahulu');
-                return redirect('/');
+                return redirect('/admin');
             }
     }
     /**
@@ -153,12 +153,13 @@ class DashboardController extends Controller
             ->update([
                 'nama' => $request->nama,
                 'nim' => $request->nim,
+                'pic'=> $request->pic,
                 'studi' => $request->studi,
                 'phone' => $request->phone,
                 'email_kampus' => $request->email_kampus,
                 'mahasiswa.id_course' => $request->title,
             ]);
-        return redirect('/dataTable');
+        return redirect('/admin/dataTable');
     }
     /**
      * Delete Form Page.
@@ -172,7 +173,7 @@ class DashboardController extends Controller
             ->join('course', 'mahasiswa.id_course', '=', 'course.id_course')
             ->where('id_mahasiswa', '=', $id)
             ->delete();
-        return redirect('/dataTable');
+        return redirect('/admin/dataTable');
     }
     /**
      * Create Form Page.
@@ -198,6 +199,7 @@ class DashboardController extends Controller
         DB::table('mahasiswa')->insert([
             'nama' => $request->nama,
             'nim' => $request->nim,
+            'pic'=> $request->pic,
             'studi' => $request->studi,
             'phone' => $request->phone,
             'email' => $request->email,
@@ -207,7 +209,7 @@ class DashboardController extends Controller
             'id_domisili' => $request->domisili,
         ]);
         // return "hehe";
-        return redirect('/dataTable');
+        return redirect('/admin/dataTable');
     }
     public function authLogin(Request $request)
     {
@@ -221,15 +223,16 @@ class DashboardController extends Controller
             // session
             // session()->put('nama_admin', $nama_admin);
             $request->session()->put('admin', $nama_admin);
-            return redirect('/default');
+            return redirect('/admin/default');
         }else{
             Session::flash('error', 'Username atau Password Salah!');
-            return redirect('/');
+            return redirect('/admin');
         }
     }
-    public function authLogout()
+    public function authLogout(Request $request)
     {
-        session()->forget('admin');
-        return redirect('/');
+        $request->session()->forget('admin');
+        $request->session()->flush();
+        return redirect('/admin/')->with('logout', 'Anda berhasil logout!');
     }
 }
