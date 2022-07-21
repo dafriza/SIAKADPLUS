@@ -17,13 +17,9 @@ use Illuminate\Support\Facades\Session;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function (Request $request) {
-    if ($request->session()->has('mahasiswa')) {
-        return redirect('/mahasiswa/dasbor');
-    }
-    return view('Auth.Login_mhs');
+Route::get('/', function () {
+    return view('home');
 });
-
 // Dashboard Controller
 Route::prefix('admin')->group(function ()
 {
@@ -66,10 +62,23 @@ Route::prefix('admin')->group(function ()
 
 Route::prefix('mahasiswa')->group(function ()
 {
+    Route::get('/', function (Request $request) {
+        if ($request->session()->has('mahasiswa')) {
+            return redirect('/mahasiswa/dasbor');
+        }
+        return view('Auth.Login_mhs');
+    });
     Route::controller(MahasiswaController::class)->group(function ()
     {
         Route::post('authLoginMhs', 'authLoginMhs');
         Route::get('authLogout',  'authLogout');
         Route::get('dasbor','index');
+        // Route::get('/','index');
+        Route::get('course/{id}', 'course')->name('course');
+        Route::post('buyCourse/{id}', 'buyCourse')->name('buyCourse');
+        Route::get('learn/{id}', 'learn')->name('learn');
+        Route::get('profile','profile');
+        Route::post('updateProfile','updateProfile');
+        Route::post('uploadProject/{id}','uploadProject');
     });
 });

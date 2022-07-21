@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>NobleUI Responsive Bootstrap 4 Dashboard Template</title>
+    <title>SIAKAD+</title>
     <!-- core:css -->
     <link rel="stylesheet" href="{{ asset('../../../assets/vendors/core/core.css') }}">
     <!-- endinject -->
@@ -53,7 +53,7 @@
                                             <div class="form-group">
                                                 <label for="nama_admin">Username</label>
                                                 <input type="text" class="form-control" id="nama_admin"
-                                                    placeholder="Email" name="nama_admin">
+                                                    placeholder="Email" name="nama_admin" autofocus>
                                             </div>
                                             <div class="form-group">
                                                 <label for="password">Password</label>

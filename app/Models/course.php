@@ -25,4 +25,8 @@ class course extends Model
     {
         return $this->hasMany(pembayaran::class);
     }
+    public function learn()
+    {
+        return $this->hasMany(learn::class);
+    }
 }

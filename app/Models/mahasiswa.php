@@ -29,4 +29,8 @@ class mahasiswa extends Model
     {
         return $this->belongsTo(course::class);
     }
+    public function learn()
+    {
+        return $this->hasMany(learn::class);
+    }
 }

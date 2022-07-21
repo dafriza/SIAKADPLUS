@@ -1,6 +1,6 @@
 <nav class="sidebar">
     <div class="sidebar-header">
-        <a href="/default" class="sidebar-brand">
+        <a href="/mahasiswa/dasbor" class="sidebar-brand">
             SIAKAD<span>+</span>
         </a>
         <div class="sidebar-toggler not-active">
@@ -13,39 +13,37 @@
         <ul class="nav">
             <li class="nav-item nav-category">Main</li>
             <li class="nav-item">
-                <a href="/default" class="nav-link">
+                <a href="/mahasiswa/dasbor" class="nav-link">
                     <i class="link-icon" data-feather="box"></i>
                     <span class="link-title">Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item nav-category">Data</li>
+            <li class="nav-item nav-category">Course</li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#dataTable" role="button" aria-expanded="false"
                     aria-controls="emails">
-                    <i class="link-icon" data-feather="database"></i>
-                    <span class="link-title">Data Table</span>
+                    <i class="link-icon" data-feather="book-open"></i>
+                    <span class="link-title">Course List</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
                 <div class="collapse" id="dataTable">
                     <ul class="nav sub-menu">
+                        @foreach ($count_course as $val)
                         <li class="nav-item">
-                            <a href="/dataTable" class="nav-link">
-                                Data Mahasiswa
+                            <a href="/mahasiswa/learn/{{$val->id_course}}" class="nav-link">
+                                {{$val->title}}
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="/dataCourse" class="nav-link">
-                                Data Course
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/dataAdmin" class="nav-link">
-                                Data Admin
-                            </a>
-                        </li>
-
+                        @endforeach
                     </ul>
                 </div>
+            </li>
+            <li class="nav-item nav-category">Profile</li>
+            <li class="nav-item">
+                <a href="/mahasiswa/profile" class="nav-link">
+                    <i class="link-icon" data-feather="user"></i>
+                    <span class="link-title">My Profile</span>
+                </a>
             </li>
         </ul>
     </div>

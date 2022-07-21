@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\mahasiswa;
 use App\Models\course;
+use App\Models\pembayaran;
+use App\Models\learn;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -21,7 +23,22 @@ class MahasiswaController extends Controller
             $pic = $request->session()->get('pic');
             $data = mahasiswa::where('nim', $nim)->where('pic', $pic)->first();
             $course = course::all();
-            $count_course = DB::select("SELECT count(id_course) as jml FROM pembayaran WHERE id_mahasiswa = 2 GROUP BY id_mahasiswa");
+            $count_course = DB::select("SELECT c.*,count(p.id_course) as jml
+            FROM pembayaran p
+            inner join course c
+            on p.id_course = c.id_course
+            WHERE id_mahasiswa = $data->id_mahasiswa
+            GROUP BY id_mahasiswa,id_course;");
+            foreach ($count_course as $key => $value) {
+                // search $value->id_course in course table
+                $temp = course::where('id_course', $value->id_course)->first();
+                foreach ($course as $key2 => $val) {
+                    if ($val['id_course'] == $temp->id_course) {
+                        $course[$key2]['status'] = "true";
+                    }
+                }
+            }
+            // echo $course;
             return view('Contents.Mahasiswa.dashboard', ['data' => $data, 'course' => $course, 'count_course' => $count_course]);
         } else {
             return redirect('/')->with('errorLog', 'Anda harus login terlebih dahulu');
@@ -55,70 +72,103 @@ class MahasiswaController extends Controller
         $request->session()->flush();
         return redirect('/')->with('logout', 'Anda berhasil logout');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function course($id, Request $request)
     {
-        //
+        $courseSelect = course::find($id);
+        $course = course::all();
+        $nim = $request->session()->get('nim');
+        $pic = $request->session()->get('pic');
+        $data = mahasiswa::where('nim', $nim)->where('pic', $pic)->first();
+        $count_course = DB::select("SELECT c.*,count(p.id_course) as jml
+            FROM pembayaran p
+            inner join course c
+            on p.id_course = c.id_course
+            WHERE id_mahasiswa = $data->id_mahasiswa
+            GROUP BY id_mahasiswa,id_course;");
+        // return $pic;
+        return view('Contents.Mahasiswa.course', ['courseSelect' => $courseSelect, 'course' => $course, 'data' => $data, 'count_course' => $count_course]);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function buyCourse($id, Request $request)
     {
-        //
+        $pembayaran = new pembayaran;
+        $nim = $request->nim;
+        $pic = $request->pic;
+        $data = mahasiswa::where('nim', $nim)->where('pic', $pic)->first();
+        date_default_timezone_set("Asia/Jakarta");
+        $date = date("Y-m-d h:i:s");
+
+        $pembayaran->tanggal_pembayaran = $date;
+        $pembayaran->id_mahasiswa = $data->id_mahasiswa;
+        $pembayaran->id_course = $id;
+        $pembayaran->save();
+        $request->session()->flash('success', 'Task was successful!');
+        return redirect('/mahasiswa/dasbor');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\mahasiswa  $mahasiswa
-     * @return \Illuminate\Http\Response
-     */
-    public function show(mahasiswa $mahasiswa)
+    public function learn($id, Request $request)
     {
-        //
+        $nim = $request->session()->get('nim');
+        $pic = $request->session()->get('pic');
+        $data = mahasiswa::where('nim', $nim)->where('pic', $pic)->first();
+        $count_course = DB::select("SELECT c.*,count(p.id_course) as jml
+            FROM pembayaran p
+            inner join course c
+            on p.id_course = c.id_course
+            WHERE id_mahasiswa = $data->id_mahasiswa
+            GROUP BY id_mahasiswa,id_course;");
+
+        $learn = learn::where('id_mahasiswa', $data->id_mahasiswa)->where('id_course',$id)->get();
+        // dd ($learn);
+        $coureSelect = course::find($id);
+        // return $learn;
+        return view('Contents.Mahasiswa.learn', ['data' => $data, 'count_course' => $count_course, 'courseSelect' => $coureSelect,'learn'=>$learn]);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\mahasiswa  $mahasiswa
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(mahasiswa $mahasiswa)
+    public function profile(Request $request)
     {
-        //
+        $nim = $request->session()->get('nim');
+        $pic = $request->session()->get('pic');
+        $data = mahasiswa::where('nim', $nim)->where('pic', $pic)->first();
+        $count_course = DB::select("SELECT c.*,count(p.id_course) as jml
+            FROM pembayaran p
+            inner join course c
+            on p.id_course = c.id_course
+            WHERE id_mahasiswa = $data->id_mahasiswa
+            GROUP BY id_mahasiswa,id_course;");
+        return view('Contents.Mahasiswa.profile', ['data' => $data, 'count_course' => $count_course]);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\mahasiswa  $mahasiswa
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, mahasiswa $mahasiswa)
+    public function updateProfile(Request $request)
     {
-        //
+        $nim = $request->session()->get('nim');
+        $pic = $request->session()->get('pic');
+        $data = mahasiswa::where('nim', $nim)->where('pic', $pic)->first();
+
+        $phone = $request->phone;
+        $email = $request->email;
+
+        $mahasiswa = mahasiswa::find($data->id_mahasiswa);
+        $mahasiswa->phone = $phone;
+        $mahasiswa->email = $email;
+        $mahasiswa->save();
+        $request->session()->flash('profileUpdate', 'Task was successful!');
+        return redirect('/mahasiswa/profile');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\mahasiswa  $mahasiswa
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(mahasiswa $mahasiswa)
+    public function uploadProject(Request $request,$id)
     {
-        //
+        $judul = $request->judul;
+        $deskripsi = $request->deskripsi;
+        $link_youtube = $request->link_youtube;
+
+        $nim = $request->session()->get('nim');
+        $pic = $request->session()->get('pic');
+        $data = mahasiswa::where('nim', $nim)->where('pic', $pic)->first();
+
+        $learn = new learn;
+        $learn->id_mahasiswa = $data->id_mahasiswa;
+        $learn->id_course = $id;
+        $learn->judul = $judul;
+        $learn->deskripsi = $deskripsi;
+        $learn->link_youtube = $link_youtube;
+        $learn->save();
+        $request->session()->flash('upload', 'Task was successful!');
+        return redirect('/mahasiswa/learn/'.$id);
     }
 }

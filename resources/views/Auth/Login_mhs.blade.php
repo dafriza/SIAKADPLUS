@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>NobleUI Responsive Bootstrap 4 Dashboard Template</title>
+    <title>SIAKAD+</title>
     <!-- core:css -->
     <link rel="stylesheet" href="{{ asset('../../../assets/vendors/core/core.css') }}">
     <!-- endinject -->
@@ -53,12 +53,12 @@
                                             <div class="form-group">
                                                 <label for="nim">NIM</label>
                                                 <input type="number" class="form-control" id="nim"
-                                                    placeholder="nim" name="nim">
+                                                    placeholder="NIM" name="nim" value="{{ old('nim') }}" autofocus>
                                             </div>
                                             <div class="form-group">
                                                 <label for="pic">PIC</label>
                                                 <input type="password" class="form-control" id="pic"
-                                                    autocomplete="current-password" placeholder="pic" name="pic">
+                                                    autocomplete="current-password" placeholder="PIC" name="pic" autofocus>
                                             </div>
                                             <div class="form-check form-check-flat form-check-primary">
                                                 <label class="form-check-label">
