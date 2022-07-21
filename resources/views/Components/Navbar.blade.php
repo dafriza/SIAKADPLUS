@@ -1,9 +1,9 @@
 <nav class="navbar">
-    <a href="{{asset('#')}}" class="sidebar-toggler">
+    <a href="{{ asset('#') }}" class="sidebar-toggler">
         <i data-feather="menu"></i>
     </a>
     <div class="navbar-content">
-        <form class="search-form">
+        {{-- <form class="search-form">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
@@ -12,55 +12,76 @@
                 </div>
                 <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
             </div>
-        </form>
+        </form> --}}
         <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="{{asset('#')}}" id="languageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="flag-icon flag-icon-us mt-1" title="us"></i> <span class="font-weight-medium ml-1 mr-1 d-none d-md-inline-block">English</span>
+            {{-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="{{ asset('#') }}" id="languageDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="flag-icon flag-icon-us mt-1" title="us"></i> <span
+                        class="font-weight-medium ml-1 mr-1 d-none d-md-inline-block">English</span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="languageDropdown">
-    <a href="{{asset('javascript:;')}}" class="dropdown-item py-2"><i class="flag-icon flag-icon-us" title="us" id="us"></i> <span class="ml-1"> English </span></a>
-    <a href="{{asset('javascript:;')}}" class="dropdown-item py-2"><i class="flag-icon flag-icon-fr" title="fr" id="fr"></i> <span class="ml-1"> French </span></a>
-    <a href="{{asset('javascript:;')}}" class="dropdown-item py-2"><i class="flag-icon flag-icon-de" title="de" id="de"></i> <span class="ml-1"> German </span></a>
-    <a href="{{asset('javascript:;')}}" class="dropdown-item py-2"><i class="flag-icon flag-icon-pt" title="pt" id="pt"></i> <span class="ml-1"> Portuguese </span></a>
-    <a href="{{asset('javascript:;')}}" class="dropdown-item py-2"><i class="flag-icon flag-icon-es" title="es" id="es"></i> <span class="ml-1"> Spanish </span></a>
+                    <a href="{{ asset('javascript:;') }}" class="dropdown-item py-2"><i class="flag-icon flag-icon-us"
+                            title="us" id="us"></i> <span class="ml-1"> English </span></a>
+                    <a href="{{ asset('javascript:;') }}" class="dropdown-item py-2"><i class="flag-icon flag-icon-fr"
+                            title="fr" id="fr"></i> <span class="ml-1"> French </span></a>
+                    <a href="{{ asset('javascript:;') }}" class="dropdown-item py-2"><i class="flag-icon flag-icon-de"
+                            title="de" id="de"></i> <span class="ml-1"> German </span></a>
+                    <a href="{{ asset('javascript:;') }}" class="dropdown-item py-2"><i class="flag-icon flag-icon-pt"
+                            title="pt" id="pt"></i> <span class="ml-1"> Portuguese </span></a>
+                    <a href="{{ asset('javascript:;') }}" class="dropdown-item py-2"><i class="flag-icon flag-icon-es"
+                            title="es" id="es"></i> <span class="ml-1"> Spanish </span></a>
                 </div>
-</li>
-            <li class="nav-item dropdown nav-apps">
-                <a class="nav-link dropdown-toggle" href="{{asset('#')}}" id="appsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </li> --}}
+            {{-- <li class="nav-item dropdown nav-apps">
+                <a class="nav-link dropdown-toggle" href="{{ asset('#') }}" id="appsDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i data-feather="grid"></i>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="appsDropdown">
                     <div class="dropdown-header d-flex align-items-center justify-content-between">
                         <p class="mb-0 font-weight-medium">Web Apps</p>
-                        <a href="{{asset('javascript:;')}}" class="text-muted">Edit</a>
+                        <a href="{{ asset('javascript:;') }}" class="text-muted">Edit</a>
                     </div>
                     <div class="dropdown-body">
                         <div class="d-flex align-items-center apps">
-                            <a href="{{asset('pages/apps/chat.html')}}"><i data-feather="message-square" class="icon-lg"></i><p>Chat</p></a>
-                            <a href="{{asset('pages/apps/calendar.html')}}"><i data-feather="calendar" class="icon-lg"></i><p>Calendar</p></a>
-                            <a href="{{asset('pages/email/inbox.html')}}"><i data-feather="mail" class="icon-lg"></i><p>Email</p></a>
-                            <a href="{{asset('pages/general/profile.html')}}"><i data-feather="instagram" class="icon-lg"></i><p>Profile</p></a>
+                            <a href="{{ asset('pages/apps/chat.html') }}"><i data-feather="message-square"
+                                    class="icon-lg"></i>
+                                <p>Chat</p>
+                            </a>
+                            <a href="{{ asset('pages/apps/calendar.html') }}"><i data-feather="calendar"
+                                    class="icon-lg"></i>
+                                <p>Calendar</p>
+                            </a>
+                            <a href="{{ asset('pages/email/inbox.html') }}"><i data-feather="mail" class="icon-lg"></i>
+                                <p>Email</p>
+                            </a>
+                            <a href="{{ asset('pages/general/profile.html') }}"><i data-feather="instagram"
+                                    class="icon-lg"></i>
+                                <p>Profile</p>
+                            </a>
                         </div>
                     </div>
                     <div class="dropdown-footer d-flex align-items-center justify-content-center">
-                        <a href="{{asset('javascript:;')}}">View all</a>
+                        <a href="{{ asset('javascript:;') }}">View all</a>
                     </div>
                 </div>
-            </li>
-            <li class="nav-item dropdown nav-messages">
-                <a class="nav-link dropdown-toggle" href="{{asset('#')}}" id="messageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </li> --}}
+            {{-- <li class="nav-item dropdown nav-messages">
+                <a class="nav-link dropdown-toggle" href="{{ asset('#') }}" id="messageDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i data-feather="mail"></i>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="messageDropdown">
                     <div class="dropdown-header d-flex align-items-center justify-content-between">
                         <p class="mb-0 font-weight-medium">9 New Messages</p>
-                        <a href="{{asset('javascript:;')}}" class="text-muted">Clear all</a>
+                        <a href="{{ asset('javascript:;') }}" class="text-muted">Clear all</a>
                     </div>
                     <div class="dropdown-body">
-                        <a href="{{asset('javascript:;')}}" class="dropdown-item">
+                        <a href="{{ asset('javascript:;') }}" class="dropdown-item">
                             <div class="figure">
-                                <img src="{{asset('https://ui-avatars.com/api/?name='.Session::get('admin').'&background=00ADEF&color=fff')}}" alt="userr">
+                                <img src="{{ asset('https://ui-avatars.com/api/?name=' . Session::get('admin') . '&background=00ADEF&color=fff') }}"
+                                    alt="userr">
                             </div>
                             <div class="content">
                                 <div class="d-flex justify-content-between align-items-center">
@@ -70,9 +91,10 @@
                                 <p class="sub-text text-muted">Project status</p>
                             </div>
                         </a>
-                        <a href="{{asset('javascript:;')}}" class="dropdown-item">
+                        <a href="{{ asset('javascript:;') }}" class="dropdown-item">
                             <div class="figure">
-                                <img src="{{asset('https://ui-avatars.com/api/?name='.Session::get('admin').'&background=00ADEF&color=fff')}}" alt="userr">
+                                <img src="{{ asset('https://ui-avatars.com/api/?name=' . Session::get('admin') . '&background=00ADEF&color=fff') }}"
+                                    alt="userr">
                             </div>
                             <div class="content">
                                 <div class="d-flex justify-content-between align-items-center">
@@ -82,9 +104,10 @@
                                 <p class="sub-text text-muted">Client meeting</p>
                             </div>
                         </a>
-                        <a href="{{asset('javascript:;')}}" class="dropdown-item">
+                        <a href="{{ asset('javascript:;') }}" class="dropdown-item">
                             <div class="figure">
-                                <img src="{{asset('https://ui-avatars.com/api/?name='.Session::get('admin').'&background=00ADEF&color=fff')}}" alt="userr">
+                                <img src="{{ asset('https://ui-avatars.com/api/?name=' . Session::get('admin') . '&background=00ADEF&color=fff') }}"
+                                    alt="userr">
                             </div>
                             <div class="content">
                                 <div class="d-flex justify-content-between align-items-center">
@@ -94,22 +117,23 @@
                                 <p class="sub-text text-muted">Project updates</p>
                             </div>
                         </a>
-                        <a href="{{asset('javascript:;')}}" class="dropdown-item">
+                        <a href="{{ asset('javascript:;') }}" class="dropdown-item">
                             <div class="figure">
-                                <img src="{{asset('https://ui-avatars.com/api/?name='.Session::get('admin').'&background=00ADEF&color=fff')}}" alt="userr">
+                                <img src="{{ asset('https://ui-avatars.com/api/?name=' . Session::get('admin') . '&background=00ADEF&color=fff') }}"
+                                    alt="userr">
                             </div>
                             <div class="content">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    {{-- <p>Amiah Burton</p> --}}
-                                    <p>{{Session::get('admin')}}</p>
+                                    <p>{{ Session::get('admin') }}</p>
                                     <p class="sub-text text-muted">2 hrs ago</p>
                                 </div>
                                 <p class="sub-text text-muted">Project deadline</p>
                             </div>
                         </a>
-                        <a href="{{asset('javascript:;')}}" class="dropdown-item">
+                        <a href="{{ asset('javascript:;') }}" class="dropdown-item">
                             <div class="figure">
-                                <img src="{{asset('https://ui-avatars.com/api/?name='.Session::get('admin').'&background=00ADEF&color=fff')}}" alt="userr">
+                                <img src="{{ asset('https://ui-avatars.com/api/?name=' . Session::get('admin') . '&background=00ADEF&color=fff') }}"
+                                    alt="userr">
                             </div>
                             <div class="content">
                                 <div class="d-flex justify-content-between align-items-center">
@@ -121,12 +145,13 @@
                         </a>
                     </div>
                     <div class="dropdown-footer d-flex align-items-center justify-content-center">
-                        <a href="{{asset('javascript:;')}}">View all</a>
+                        <a href="{{ asset('javascript:;') }}">View all</a>
                     </div>
                 </div>
-            </li>
-            <li class="nav-item dropdown nav-notifications">
-                <a class="nav-link dropdown-toggle" href="{{asset('#')}}" id="notificationDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </li> --}}
+            {{-- <li class="nav-item dropdown nav-notifications">
+                <a class="nav-link dropdown-toggle" href="{{ asset('#') }}" id="notificationDropdown"
+                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i data-feather="bell"></i>
                     <div class="indicator">
                         <div class="circle"></div>
@@ -135,10 +160,10 @@
                 <div class="dropdown-menu" aria-labelledby="notificationDropdown">
                     <div class="dropdown-header d-flex align-items-center justify-content-between">
                         <p class="mb-0 font-weight-medium">6 New Notifications</p>
-                        <a href="{{asset('javascript:;')}}" class="text-muted">Clear all</a>
+                        <a href="{{ asset('javascript:;') }}" class="text-muted">Clear all</a>
                     </div>
                     <div class="dropdown-body">
-                        <a href="{{asset('javascript:;')}}" class="dropdown-item">
+                        <a href="{{ asset('javascript:;') }}" class="dropdown-item">
                             <div class="icon">
                                 <i data-feather="user-plus"></i>
                             </div>
@@ -147,7 +172,7 @@
                                 <p class="sub-text text-muted">2 sec ago</p>
                             </div>
                         </a>
-                        <a href="{{asset('javascript:;')}}" class="dropdown-item">
+                        <a href="{{ asset('javascript:;') }}" class="dropdown-item">
                             <div class="icon">
                                 <i data-feather="gift"></i>
                             </div>
@@ -156,7 +181,7 @@
                                 <p class="sub-text text-muted">30 min ago</p>
                             </div>
                         </a>
-                        <a href="{{asset('javascript:;')}}" class="dropdown-item">
+                        <a href="{{ asset('javascript:;') }}" class="dropdown-item">
                             <div class="icon">
                                 <i data-feather="alert-circle"></i>
                             </div>
@@ -165,7 +190,7 @@
                                 <p class="sub-text text-muted">1 hrs ago</p>
                             </div>
                         </a>
-                        <a href="{{asset('javascript:;')}}" class="dropdown-item">
+                        <a href="{{ asset('javascript:;') }}" class="dropdown-item">
                             <div class="icon">
                                 <i data-feather="layers"></i>
                             </div>
@@ -174,7 +199,7 @@
                                 <p class="sub-text text-muted">5 hrs ago</p>
                             </div>
                         </a>
-                        <a href="{{asset('javascript:;')}}" class="dropdown-item">
+                        <a href="{{ asset('javascript:;') }}" class="dropdown-item">
                             <div class="icon">
                                 <i data-feather="download"></i>
                             </div>
@@ -185,44 +210,50 @@
                         </a>
                     </div>
                     <div class="dropdown-footer d-flex align-items-center justify-content-center">
-                        <a href="{{asset('javascript:;')}}">View all</a>
+                        <a href="{{ asset('javascript:;') }}">View all</a>
                     </div>
                 </div>
+            </li> --}}
+            <li class="nav-item">
+                <button class="btn btn-outline-primary rounded-pill">{{Session::get('admin') }}</button>
             </li>
             <li class="nav-item dropdown nav-profile">
-                <a class="nav-link dropdown-toggle" href="{{asset('#')}}" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="{{asset('https://ui-avatars.com/api/?name='.Session::get('admin').'&background=00ADEF&color=fff')}}" alt="profile">
+                <a class="nav-link dropdown-toggle" href="{{ asset('#') }}" id="profileDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="{{ asset('https://ui-avatars.com/api/?name=' . Session::get('admin') . '&background=00ADEF&color=fff') }}"
+                        alt="profile">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="profileDropdown">
                     <div class="dropdown-header d-flex flex-column align-items-center">
                         <div class="figure mb-3">
-                            <img src="{{asset('https://ui-avatars.com/api/?name='.Session::get('admin').'&background=00ADEF&color=fff')}}" alt="">
+                            <img src="{{ asset('https://ui-avatars.com/api/?name=' . Session::get('admin') . '&background=00ADEF&color=fff') }}"
+                                alt="">
                         </div>
                         <div class="info text-center">
-                            <p class="name font-weight-bold mb-0">{{Session::get('admin')}}</p>
-                            <p class="email text-muted mb-3">amiahburton@gmail.com</p>
+                            <p class="name font-weight-bold mb-0">{{ Session::get('admin') }}</p>
+                            <p class="email text-muted mb-3">{{Session::get('admin')}}</p>
                         </div>
                     </div>
                     <div class="dropdown-body">
                         <ul class="profile-nav p-0 pt-3">
-                            <li class="nav-item">
-                                <a href="{{asset('pages/general/profile.html')}}" class="nav-link">
+                            {{-- <li class="nav-item">
+                                <a href="{{ asset('pages/general/profile.html') }}" class="nav-link">
                                     <i data-feather="user"></i>
                                     <span>Profile</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{asset('javascript:;')}}" class="nav-link">
+                                <a href="{{ asset('javascript:;') }}" class="nav-link">
                                     <i data-feather="edit"></i>
                                     <span>Edit Profile</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{asset('javascript:;')}}" class="nav-link">
+                                <a href="{{ asset('javascript:;') }}" class="nav-link">
                                     <i data-feather="repeat"></i>
                                     <span>Switch User</span>
                                 </a>
-                            </li>
+                            </li> --}}
                             <li class="nav-item">
                                 <a href="/admin/authLogout" class="nav-link">
                                     <i data-feather="log-out"></i>

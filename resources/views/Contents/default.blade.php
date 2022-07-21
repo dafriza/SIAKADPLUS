@@ -117,7 +117,7 @@
                             </div>
                         </div>
                     </div> --}}
-                    <a href="/dataCourse" class="btn btn-primary btn-block">Details</a>
+                    <a href="/admin/dataCourse" class="btn btn-primary btn-block">Details</a>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 <nav class="sidebar">
     <div class="sidebar-header">
-        <a href="/default" class="sidebar-brand">
+        <a href="/admin/default" class="sidebar-brand">
             SIAKAD<span>+</span>
         </a>
         <div class="sidebar-toggler not-active">
@@ -13,7 +13,7 @@
         <ul class="nav">
             <li class="nav-item nav-category">Main</li>
             <li class="nav-item">
-                <a href="/default" class="nav-link">
+                <a href="/admin/default" class="nav-link">
                     <i class="link-icon" data-feather="box"></i>
                     <span class="link-title">Dashboard</span>
                 </a>

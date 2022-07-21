@@ -41,7 +41,7 @@ class MahasiswaController extends Controller
             // echo $course;
             return view('Contents.Mahasiswa.dashboard', ['data' => $data, 'course' => $course, 'count_course' => $count_course]);
         } else {
-            return redirect('/')->with('errorLog', 'Anda harus login terlebih dahulu');
+            return redirect('/mahasiswa')->with('errorLog', 'Anda harus login terlebih dahulu');
         }
     }
     /**
@@ -60,7 +60,7 @@ class MahasiswaController extends Controller
             $request->session()->put('pic', $pic);
             return redirect('/mahasiswa/dasbor');
         } else {
-            return redirect('/')->with('errorLog', 'NIM atau PIC salah');
+            return redirect('/mahasiswa')->with('errorLog', 'NIM atau PIC salah');
         }
         // return $db;
         // $db = mahasiswa::all();
@@ -70,7 +70,7 @@ class MahasiswaController extends Controller
     {
         $request->session()->forget(['mahasiswa', 'nim', 'pic']);
         $request->session()->flush();
-        return redirect('/')->with('logout', 'Anda berhasil logout');
+        return redirect('/mahasiswa')->with('logout', 'Anda berhasil logout');
     }
     public function course($id, Request $request)
     {

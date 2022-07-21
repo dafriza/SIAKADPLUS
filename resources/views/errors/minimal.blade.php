@@ -32,7 +32,7 @@
 						{{-- <h4 class="mb-2">Page Not Found</h4> --}}
 						{{-- <h6 class="text-muted mb-3 text-center">Oopps!! The page you were looking for doesn't exist.</h6> --}}
 						<h6 class="text-muted mb-3 text-center">@yield('message')</h6>
-						<a href="/mahasiswa/dasbor" class="btn btn-primary">Back to home</a>
+						<a href="/" class="btn btn-primary">Back to home</a>
 					</div>
 				</div>
 
